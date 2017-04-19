@@ -14,5 +14,17 @@
  *= require_self
  */
 
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+//Import bootstrap-sprockets
+@import "bootstrap-sprockets";
+
+// Import cerulean variables
+@import "bootswatch/slate/variables";
+
+// Then bootstrap itself
+@import "bootstrap";
+
+
+
+// And finally bootswatch style itself
+@import "bootswatch/slate/bootswatch";
+

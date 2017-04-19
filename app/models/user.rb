@@ -19,4 +19,9 @@ class User < ActiveRecord::Base
 	  login = conditions.delete(:login)
 	  where(conditions).where(["lower(username) = :value OR lower(email) = :value", {value: login.strip.downcase}]).first
 	end
+
+  def avatar_url(size)
+  	gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+  	"http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  end
 end
