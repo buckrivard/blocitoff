@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
-  get 'home/index'
-
-	get 'profile', to: 'users#show'
   
-  devise_for :users
+  devise_for :users, :path => 'accounts'
+
+  resources :users, only: [] do
+  	resources :items, only: [:create]
+  end
 
   authenticated :user do
   	root 'users#show', as: :authenticated_root
