@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :path => 'accounts'
 
   resources :users, only: [] do
-  	resources :items, only: [:create]
+  	resources :items, only: [:create, :new]
   end
 
   authenticated :user do
