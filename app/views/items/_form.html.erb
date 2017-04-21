@@ -1,0 +1,13 @@
+<div class="col-md-6">
+	<%= form_for @item, url: user_items_path(@user) do |f| %>
+  <div class="form-group">
+  	<%= f.hidden_field :user_id, value: current_user.id %>
+  	<%= f.text_field :name, class: 'form-control', placeholder: "Enter new item here" %>
+  </div>
+	<div class="input-group">
+		<span class="input-group-btn">
+			<%= f.submit "Save", class: 'btn btn-primary' %>
+		</span>
+	</div>
+  <% end %>
+</div>
