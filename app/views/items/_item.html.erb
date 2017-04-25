@@ -1,4 +1,7 @@
 <li class="list-group-item">
-  <%= link_to "", user_item_path(item.user_id, item.id), method: :delete, class: 'glyphicon glyphicon-ok' %>
-  <%= item.name %>
+  <span><%= link_to "", user_item_path(item.user_id, item.id), method: :delete, class: 'glyphicon glyphicon-ok' %></span> 
+  <span><%= item.name %></span>
+  <span class="pull-right">
+  <%= distance_of_time_in_words_to_now(item.created_at + 7.days) %>	
+  </span>
 </li>
