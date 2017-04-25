@@ -17,9 +17,21 @@ class ItemsController < ApplicationController
   	redirect_to root_path
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      flash[:notice] = "#{@item.name} complete!"
+    else
+      flash[:alert] = "Problem marking task complete. Try again."
+    end
+    redirect_to authenticated_root_path
+  end
+
   private
 
   def post_params
   	params.require(:item).permit(:name)
   end
+
 end
