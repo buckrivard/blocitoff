@@ -5,32 +5,18 @@ class ItemsController < ApplicationController
 	end
 
   def create
-  	@item = Item.new
-  	@item.update(post_params)
-  	@item.user_id = current_user.id
-
-  	if @item.save
-  		flash[:notice] = "Item added. You have 7 days to complete it!"
-  	else
-  		flash[:alert] = "Error creating your item. Let's try it again."
-  	end
-  	redirect_to root_path
+  	@item = current_user.items.new(item_params)
+    @item.save
   end
 
   def destroy
     @item = Item.find(params[:id])
-
-    if @item.destroy
-      flash[:notice] = "#{@item.name} complete!"
-    else
-      flash[:alert] = "Problem marking task complete. Try again."
-    end
-    redirect_to authenticated_root_path
+    @item.destroy
   end
 
   private
 
-  def post_params
+  def item_params
   	params.require(:item).permit(:name)
   end
 

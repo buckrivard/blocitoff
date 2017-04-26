@@ -1,7 +1,7 @@
-<li class="list-group-item">
-  <span class="pull-left"><%= link_to "", user_item_path(item.user_id, item.id), method: :delete, class: 'glyphicon glyphicon-ok' %></span> 
+<li class="list-group-item" id="item_<%= item.id %>">
+  <span class="pull-left"><%= link_to "", user_item_path(item.user_id, item.id), method: :delete, class: 'glyphicon glyphicon-ok', remote: true %></span> 
   <div class="col-md-10 npr"><%= item.name %></div>
   <div>
-  <span class="pull-right"><%= distance_of_time_in_words(Time.now, item.created_at + 7.days, false, highest_measure_only: true) %></span>
+  <span class="pull-right" data-toggle="popover" data-content="<%= distance_of_time_in_words(Time.now, item.created_at + 7.days, true, highest_measures: 3) %>" data-trigger="hover"><%= distance_of_time_in_words(Time.now, item.created_at + 7.days, false, highest_measure_only: true) %></span>
   </div>
 </li>

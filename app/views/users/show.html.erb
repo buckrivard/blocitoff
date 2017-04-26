@@ -1,11 +1,14 @@
 <div class="col-md-8 col-md-offset-2 horiz-center">
 	<div>
-		<h2 class='text-center'>To-Do Items</h2>
-	  <%= form_for [current_user, @item], url: user_items_path(current_user) do |f| %>
+		<div class="text-center">
+			<h2>To-Do Items</h2>
+			<small class="mb5">Items self-destruct in 7 days! If you don't get around to it in a week, is it worth getting around to at all?</small>
+		</div>
+		
+	  <%= form_for [current_user, @item], url: user_items_path(current_user), remote: true do |f| %>
 	    <div class="form-group mb0">
 	     	<div class="input-group rounded">
 	     		<%= f.text_field :name, class: 'form-control', placeholder: 'Enter new to-do item' %>
-		      <%= f.hidden_field :user_id, value: current_user.id %>
 		      <span class="input-group-btn">
 		      	<%= f.submit "Save", class: 'btn btn-primary', id: 'button-grow' %>
 		     	</span>
@@ -14,7 +17,7 @@
 	  <% end %>
 	</div>
   
-  <ul class="list-group checked-list-box flex-columns">
+  <ul class="list-group checked-list-box flex-columns items">
     <%= render @items %>
   </ul>
 </div>
