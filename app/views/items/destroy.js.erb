@@ -1,5 +1,6 @@
 $('.flash').show().html("<div class='alert alert-success'>Item removed</div>");
+$('#item_<%= @item.id %>').slideUp('slow', function(){ $('#item_<%= @item.id %>').remove(); });
+
 setTimeout(function() {
 	$('.flash').slideUp('slow', null);
-	$('#item_<%= @item.id %>').slideUp('slow', null);
-}, 1000);
+}, 2000);
